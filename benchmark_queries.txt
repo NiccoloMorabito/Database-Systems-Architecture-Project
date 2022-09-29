@@ -1,0 +1,36 @@
+STRICTLY LEFT
+
+explain analyze select * from random1 t where t.r << int4range(-150000,150000);
+
+explain analyze select * from short1 t where t.r << int4range(-150000,150000);
+
+explain analyze select * from long1 t where t.r << int4range(-150000,150000);
+
+explain analyze select * from small1 t where t.r << int4range(-150000,150000);
+
+explain analyze select * from big t where t.r << int4range(-150000,150000);
+
+
+OVERLAP
+explain analyze select * from random1 t where t.r && int4range(-150000,150000);
+
+explain analyze select * from short1 t where t.r && int4range(-150000,150000);
+
+explain analyze select * from long1 t where t.r && int4range(-150000,150000);
+
+explain analyze select * from small1 t where t.r && int4range(-150000,150000);
+
+explain analyze select * from big t where t.r && int4range(-150000,150000);
+
+
+
+JOIN
+explain analyze select * from random1 t1, random2 t2 where t1.r && t2.r;
+
+explain analyze select * from short1 t1, short2 t2 where t1.r && t2.r;
+
+explain analyze select * from long1 t1, long2 t2 where t1.r && t2.r;
+
+explain analyze select * from big t1, small2 t2 where t1.r && t2.r;
+
+explain analyze select * from small1 t1,big t2 where t1.r && t2.r;
